@@ -1,0 +1,238 @@
+`timescale 1ns/1ps
+module KS_TB #(parameter DATA_WIDTH = 14, OUTPUT_WIDTH = 15);
+
+reg clk_tb;
+reg rst_tb;
+reg [DATA_WIDTH-1:0] A_reg, B_reg;
+reg Cin_reg;
+wire [OUTPUT_WIDTH-1:0] S_reg;
+//wire Cout;
+
+KG_TOP DUT(.clk(clk_tb), .rst(rst_tb), .A(A_reg), .B(B_reg), .Cin(Cin_reg), .S(S_reg));
+
+localparam period = 10;
+always #(period/2) clk_tb = ~clk_tb;
+
+initial begin
+	clk_tb = 1'b0;
+    A_reg = 14'd0;
+    B_reg = 14'd0;
+    Cin_reg = 1'b0;
+    #(5*period);
+
+    A_reg = 14'd5;
+    B_reg = 14'd20;
+    Cin_reg = 1'b1;
+    #(5*period);
+
+    A_reg = 14'd123;
+    B_reg = 14'd321;
+    Cin_reg = 1'b1;
+    #(5*period);
+    $stop;
+end
+
+endmodule
+
+
+
+
+
+
+
+module Kogge_Stone_ADDER_14 #(parameter DATA_WIDTH = 14, OUTPUT_WIDTH = 15) (
+	input wire [DATA_WIDTH-1:0] A_reg,
+    input wire [DATA_WIDTH-1:0] B_reg,
+    input wire                  Cin_reg,
+
+    output reg [OUTPUT_WIDTH-1:0] S_reg
+);
+
+wire [DATA_WIDTH-1:0] G;
+wire [DATA_WIDTH-1:0] P;
+
+// Level 0.
+Gen  G0(A_reg[0], B_reg[0], G[0]);
+Prob P0(A_reg[0], B_reg[0], P[0]);
+Gen  G1(A_reg[1], B_reg[1], G[1]);
+Prob P1(A_reg[1], B_reg[1], P[1]);
+Gen  G2(A_reg[2], B_reg[2], G[2]);
+Prob P2(A_reg[2], B_reg[2], P[2]);
+Gen  G3(A_reg[3], B_reg[3], G[3]);
+Prob P3(A_reg[3], B_reg[3], P[3]);
+Gen  G4(A_reg[4], B_reg[4], G[4]);
+Prob P4(A_reg[4], B_reg[4], P[4]);
+Gen  G5(A_reg[5], B_reg[5], G[5]);
+Prob P5(A_reg[5], B_reg[5], P[5]);
+Gen  G6(A_reg[6], B_reg[6], G[6]);
+Prob P6(A_reg[6], B_reg[6], P[6]);
+Gen  G7(A_reg[7], B_reg[7], G[7]);
+Prob P7(A_reg[7], B_reg[7], P[7]);
+Gen  G8(A_reg[8], B_reg[8], G[8]);
+Prob P8(A_reg[8], B_reg[8], P[8]);
+Gen  G9(A_reg[9], B_reg[9], G[9]);
+Prob P9(A_reg[9], B_reg[9], P[9]);
+Gen  G10(A_reg[10], B_reg[10], G[10]);
+Prob P10(A_reg[10], B_reg[10], P[10]);
+Gen  G11(A_reg[11], B_reg[11], G[11]);
+Prob P11(A_reg[11], B_reg[11], P[11]);
+Gen  G12(A_reg[12], B_reg[12], G[12]);
+Prob P12(A_reg[12], B_reg[12], P[12]);
+Gen  G13(A_reg[13], B_reg[13], G[13]);
+Prob P13(A_reg[13], B_reg[13], P[13]);
+
+
+
+//Level 1.
+wire G0_1, P0_1;
+wire G1_2, P1_2;
+wire G2_3, P2_3;
+wire G3_4, P3_4;
+wire G4_5, P4_5;
+wire G5_6, P5_6;
+wire G6_7, P6_7;
+wire G7_8, P7_8;
+wire G8_9, P8_9;
+wire G9_10, P9_10;
+wire G10_11, P10_11;
+wire G11_12, P11_12;
+wire G12_13, P12_13;
+Dot D0_1(G[0], P[0], G[1], P[1], G0_1, P0_1);
+Dot D1_2(G[1], P[1], G[2], P[2], G1_2, P1_2);
+Dot D2_3(G[2], P[2], G[3], P[3], G2_3, P2_3);
+Dot D3_4(G[3], P[3], G[4], P[4], G3_4, P3_4);
+Dot D4_5(G[4], P[4], G[5], P[5], G4_5, P4_5);
+Dot D5_6(G[5], P[5], G[6], P[6], G5_6, P5_6);
+Dot D6_7(G[6], P[6], G[7], P[7], G6_7, P6_7);
+Dot D7_8(G[7], P[7], G[8], P[8], G7_8, P7_8);
+Dot D8_9(G[8], P[8], G[9], P[9], G8_9, P8_9);
+Dot D9_10(G[9], P[9], G[10], P[10], G9_10, P9_10);
+Dot D10_11(G[10], P[10], G[11], P[11], G10_11, P10_11);
+Dot D11_12(G[11], P[11], G[12], P[12], G11_12, P11_12);
+Dot D12_13(G[12], P[12], G[13], P[13], G12_13, P12_13);
+
+
+//Level 2.
+wire G0_2, P0_2;
+wire G0_3, P0_3;
+wire G1_4, P1_4;
+wire G2_5, P2_5;
+wire G3_6, P3_6;
+wire G4_7, P4_7;
+wire G5_8, P5_8;
+wire G6_9, P6_9;
+wire G7_10, P7_10;
+wire G8_11, P8_11;
+wire G9_12, P9_12;
+wire G10_13, P10_13;
+Dot D0_2(G[0], P[0], G1_2, P1_2, G0_2, P0_2);
+Dot D0_3(G0_1, P0_1, G2_3, P2_3, G0_3, P0_3);
+Dot D1_4(G1_2, P1_2, G3_4, P3_4, G1_4, P1_4);
+Dot D2_5(G2_3, P2_3, G4_5, P4_5, G2_5, P2_5);
+Dot D3_6(G3_4, P3_4, G5_6, P5_6, G3_6, P3_6);
+Dot D4_7(G4_5, P4_5, G6_7, P6_7, G4_7, P4_7);
+Dot D5_8(G5_6, P5_6, G7_8, P7_8, G5_8, P5_8);
+Dot D6_9(G6_7, P6_7, G8_9, P8_9, G6_9, P6_9);
+Dot D7_10(G7_8, P7_8, G9_10, P9_10, G7_10, P7_10);
+Dot D8_11(G8_9, P8_9, G10_11, P10_11, G8_11, P8_11);
+Dot D9_12(G9_10,  P9_10, G11_12, P11_12, G9_12, P9_12);
+Dot D10_13(G10_11, P10_11, G12_13, P12_13, G10_13, P10_13);
+
+
+//Level 3.
+wire G0_4, P0_4;
+wire G0_5, P0_5;
+wire G0_6, P0_6;
+wire G0_7, P0_7;
+wire G1_8, P1_8;
+wire G2_9, P2_9;
+wire G3_10, P3_10;
+wire G4_11, P4_11;
+wire G5_12, P5_12;
+wire G6_13, P6_13;
+Dot D0_4(G[0], P[0], G1_4, P1_4, G0_4, P0_4);
+Dot D0_5(G0_1, P0_1, G2_5, P2_5, G0_5, P0_5);
+Dot D0_6(G0_2, P0_2, G3_6, P3_6, G0_6, P0_6);
+Dot D0_7(G0_3, P0_3, G4_7, P4_7, G0_7, P0_7);
+Dot D1_8(G1_4, P1_4, G5_8, P5_8, G1_8, P1_8);
+Dot D2_9(G2_5, P2_5, G6_9, P6_9, G2_9, P2_9);
+Dot D3_10(G3_6, P3_6, G7_10, P7_10, G3_10, P3_10);
+Dot D4_11(G4_7, P4_7, G8_11, P8_11, G4_11, P4_11);
+Dot D5_12(G5_8, P5_8, G9_12, P9_12, G5_12, P5_12);
+Dot D6_13(G6_9, P6_9, G10_13, P10_13, G6_13, P6_13);
+
+
+//Level 4.
+wire G0_8, P0_8;
+wire G0_9, P0_9;
+wire G0_10, P0_10;
+wire G0_11, P0_11;
+wire G0_12, P0_12;
+wire G0_13, P0_13;
+Dot D0_8(G[0], P[0], G1_8, P1_8, G0_8, P0_8);
+Dot D0_9(G0_1, P0_1, G2_9, P2_9, G0_9, P0_9);
+Dot D0_10(G0_2, P0_2, G3_10, P3_10, G0_10, P0_10);
+Dot D9_11(G0_3, P0_3, G4_11, P4_11, G0_11, P0_11);
+Dot D0_12(G0_4, P0_4, G5_12, P5_12, G0_12, P0_12);
+Dot D0_13(G0_5, P0_5, G6_13, P6_13, G0_13, P0_13);
+
+
+reg C0;
+reg C1;
+reg C2;
+reg C3;
+reg C4;
+reg C5;
+reg C6;
+reg C7;
+reg C8;
+reg C9;
+reg C10;
+reg C11;
+reg C12;
+reg C13;
+
+
+always @(*) begin
+    C0 = G[0] | (P[0] & Cin_reg);
+    C1 = G0_1 | (P0_1 & Cin_reg);
+    C2 = G0_2 | (P0_2 & Cin_reg);
+    C3 = G0_3 | (P0_3 & Cin_reg);
+    C4 = G0_4 | (P0_4 & Cin_reg);
+    C5 = G0_5 | (P0_5 & Cin_reg);
+    C6 = G0_6 | (P0_6 & Cin_reg);
+    C7 = G0_7 | (P0_7 & Cin_reg);
+    C8 = G0_8 | (P0_8 & Cin_reg);
+    C9 = G0_9 | (P0_9 & Cin_reg);
+    C10 = G0_10 | (P0_10 & Cin_reg);
+    C11 = G0_11 | (P0_11 & Cin_reg);
+    C12 = G0_12 | (P0_12 & Cin_reg);
+    C13 = G0_13 | (P0_13 & Cin_reg);
+end
+
+
+always @(*) begin
+    S_reg[0] = P[0] ^ Cin_reg;
+    S_reg[1] = P[1] ^ C0;
+    S_reg[2] = P[2] ^ C1;
+    S_reg[3] = P[3] ^ C2;
+    S_reg[4] = P[4] ^ C3;
+    S_reg[5] = P[5] ^ C4;
+    S_reg[6] = P[6] ^ C5;
+    S_reg[7] = P[7] ^ C6;
+    S_reg[8] = P[8] ^ C7;
+    S_reg[9] = P[9] ^ C8;
+    S_reg[10] = P[10] ^ C9;
+    S_reg[11] = P[11] ^ C10;
+    S_reg[12] = P[12] ^ C11;
+    S_reg[13] = P[13] ^ C12;
+    S_reg[14] = C12 ^ C13;
+end
+
+endmodule
+
+
+
+
+
+

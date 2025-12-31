@@ -1,0 +1,25 @@
+module dff_in #(parameter DATA_WIDTH = 32) (
+	input wire clk, rst,
+	input wire [DATA_WIDTH-1:0] A_D,
+	input wire [DATA_WIDTH-1:0] B_D,
+	input wire 		    Cin_D,
+	
+	output reg [DATA_WIDTH-1:0] A_Q,
+	output reg [DATA_WIDTH-1:0] B_Q,
+	output reg 	            Cin_Q
+);
+
+always @(posedge clk or negedge rst) begin
+	if(!rst) begin
+		A_Q <= 'b0;
+		B_Q <= 'b0;
+		Cin_Q <= 'b0;
+	end
+	else begin
+		A_Q <= A_D;
+		B_Q <= B_D;
+		Cin_Q <= Cin_D;
+	end
+end
+
+endmodule
