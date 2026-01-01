@@ -1,0 +1,32 @@
+
+#******
+# Preview export LEF
+#
+#	 Preview sub-version 5.10.41.500.3.38
+#
+# TECH LIB NAME: tsmc18
+# TECH FILE NAME: techfile.cds
+#******
+
+VERSION 5.4 ;
+
+NAMESCASESENSITIVE ON ;
+
+DIVIDERCHAR "|" ;
+BUSBITCHARS "[]" ;
+
+UNITS
+    DATABASE MICRONS 100  ;
+END UNITS
+
+MACRO KG_TOP
+    CLASS CORE ;
+    FOREIGN KG_TOP 0 0 ;
+    ORIGIN 0.00 0.00 ;
+    SIZE 120 BY 120 ;
+    SYMMETRY X Y ;
+
+    END KG_TOP
+
+END LIBRARY
+
