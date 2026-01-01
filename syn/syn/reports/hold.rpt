@@ -1,0 +1,200 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 5
+Design : KG_TOP
+Version: K-2015.06
+Date   : Thu Jan  1 15:34:05 2026
+****************************************
+
+Operating Conditions: scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c   Library: scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c
+Wire Load Model Mode: top
+
+  Startpoint: OPERAND_A_B_CIN_DFF/B_Q_reg[31]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: RESULT_S_DFF/S_Q_reg[31]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  OPERAND_A_B_CIN_DFF/B_Q_reg[31]/CK (DFFRQX2M)           0.00       0.00 r
+  OPERAND_A_B_CIN_DFF/B_Q_reg[31]/Q (DFFRQX2M)            0.25       0.25 r
+  OPERAND_A_B_CIN_DFF/B_Q[31] (dff_in)                    0.00       0.25 r
+  KG_COMP/B_reg[31] (Kogge_Stone_ADDER_32)                0.00       0.25 r
+  KG_COMP/P31/B (Prob_1)                                  0.00       0.25 r
+  KG_COMP/P31/U1/Y (CLKXOR2X2M)                           0.11       0.36 r
+  KG_COMP/P31/P (Prob_1)                                  0.00       0.36 r
+  KG_COMP/U46/Y (XNOR2X2M)                                0.03       0.39 f
+  KG_COMP/S_reg[31] (Kogge_Stone_ADDER_32)                0.00       0.39 f
+  RESULT_S_DFF/S_D[31] (dff_out)                          0.00       0.39 f
+  RESULT_S_DFF/S_Q_reg[31]/D (DFFRQX2M)                   0.00       0.39 f
+  data arrival time                                                  0.39
+
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  clock uncertainty                                       0.30       0.30
+  RESULT_S_DFF/S_Q_reg[31]/CK (DFFRQX2M)                  0.00       0.30 r
+  library hold time                                      -0.01       0.29
+  data required time                                                 0.29
+  --------------------------------------------------------------------------
+  data required time                                                 0.29
+  data arrival time                                                 -0.39
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.10
+
+
+  Startpoint: OPERAND_A_B_CIN_DFF/B_Q_reg[4]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: RESULT_S_DFF/S_Q_reg[4]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  OPERAND_A_B_CIN_DFF/B_Q_reg[4]/CK (DFFRQX2M)            0.00       0.00 r
+  OPERAND_A_B_CIN_DFF/B_Q_reg[4]/Q (DFFRQX2M)             0.25       0.25 r
+  OPERAND_A_B_CIN_DFF/B_Q[4] (dff_in)                     0.00       0.25 r
+  KG_COMP/B_reg[4] (Kogge_Stone_ADDER_32)                 0.00       0.25 r
+  KG_COMP/P4/B (Prob_28)                                  0.00       0.25 r
+  KG_COMP/P4/U1/Y (CLKXOR2X2M)                            0.12       0.37 r
+  KG_COMP/P4/P (Prob_28)                                  0.00       0.37 r
+  KG_COMP/U52/Y (XNOR2X2M)                                0.03       0.40 f
+  KG_COMP/S_reg[4] (Kogge_Stone_ADDER_32)                 0.00       0.40 f
+  RESULT_S_DFF/S_D[4] (dff_out)                           0.00       0.40 f
+  RESULT_S_DFF/S_Q_reg[4]/D (DFFRQX2M)                    0.00       0.40 f
+  data arrival time                                                  0.40
+
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  clock uncertainty                                       0.30       0.30
+  RESULT_S_DFF/S_Q_reg[4]/CK (DFFRQX2M)                   0.00       0.30 r
+  library hold time                                      -0.01       0.29
+  data required time                                                 0.29
+  --------------------------------------------------------------------------
+  data required time                                                 0.29
+  data arrival time                                                 -0.40
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.11
+
+
+  Startpoint: OPERAND_A_B_CIN_DFF/B_Q_reg[3]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: RESULT_S_DFF/S_Q_reg[3]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  OPERAND_A_B_CIN_DFF/B_Q_reg[3]/CK (DFFRQX2M)            0.00       0.00 r
+  OPERAND_A_B_CIN_DFF/B_Q_reg[3]/Q (DFFRQX2M)             0.25       0.25 r
+  OPERAND_A_B_CIN_DFF/B_Q[3] (dff_in)                     0.00       0.25 r
+  KG_COMP/B_reg[3] (Kogge_Stone_ADDER_32)                 0.00       0.25 r
+  KG_COMP/P3/B (Prob_29)                                  0.00       0.25 r
+  KG_COMP/P3/U1/Y (CLKXOR2X2M)                            0.12       0.37 r
+  KG_COMP/P3/P (Prob_29)                                  0.00       0.37 r
+  KG_COMP/U50/Y (XNOR2X2M)                                0.03       0.40 f
+  KG_COMP/S_reg[3] (Kogge_Stone_ADDER_32)                 0.00       0.40 f
+  RESULT_S_DFF/S_D[3] (dff_out)                           0.00       0.40 f
+  RESULT_S_DFF/S_Q_reg[3]/D (DFFRQX2M)                    0.00       0.40 f
+  data arrival time                                                  0.40
+
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  clock uncertainty                                       0.30       0.30
+  RESULT_S_DFF/S_Q_reg[3]/CK (DFFRQX2M)                   0.00       0.30 r
+  library hold time                                      -0.01       0.29
+  data required time                                                 0.29
+  --------------------------------------------------------------------------
+  data required time                                                 0.29
+  data arrival time                                                 -0.40
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.11
+
+
+  Startpoint: OPERAND_A_B_CIN_DFF/B_Q_reg[2]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: RESULT_S_DFF/S_Q_reg[2]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  OPERAND_A_B_CIN_DFF/B_Q_reg[2]/CK (DFFRQX2M)            0.00       0.00 r
+  OPERAND_A_B_CIN_DFF/B_Q_reg[2]/Q (DFFRQX2M)             0.25       0.25 r
+  OPERAND_A_B_CIN_DFF/B_Q[2] (dff_in)                     0.00       0.25 r
+  KG_COMP/B_reg[2] (Kogge_Stone_ADDER_32)                 0.00       0.25 r
+  KG_COMP/P2/B (Prob_30)                                  0.00       0.25 r
+  KG_COMP/P2/U1/Y (CLKXOR2X2M)                            0.12       0.37 r
+  KG_COMP/P2/P (Prob_30)                                  0.00       0.37 r
+  KG_COMP/U48/Y (XNOR2X2M)                                0.03       0.40 f
+  KG_COMP/S_reg[2] (Kogge_Stone_ADDER_32)                 0.00       0.40 f
+  RESULT_S_DFF/S_D[2] (dff_out)                           0.00       0.40 f
+  RESULT_S_DFF/S_Q_reg[2]/D (DFFRQX2M)                    0.00       0.40 f
+  data arrival time                                                  0.40
+
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  clock uncertainty                                       0.30       0.30
+  RESULT_S_DFF/S_Q_reg[2]/CK (DFFRQX2M)                   0.00       0.30 r
+  library hold time                                      -0.01       0.29
+  data required time                                                 0.29
+  --------------------------------------------------------------------------
+  data required time                                                 0.29
+  data arrival time                                                 -0.40
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.11
+
+
+  Startpoint: OPERAND_A_B_CIN_DFF/B_Q_reg[1]
+              (rising edge-triggered flip-flop clocked by CLK)
+  Endpoint: RESULT_S_DFF/S_Q_reg[1]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  OPERAND_A_B_CIN_DFF/B_Q_reg[1]/CK (DFFRQX2M)            0.00       0.00 r
+  OPERAND_A_B_CIN_DFF/B_Q_reg[1]/Q (DFFRQX2M)             0.25       0.25 r
+  OPERAND_A_B_CIN_DFF/B_Q[1] (dff_in)                     0.00       0.25 r
+  KG_COMP/B_reg[1] (Kogge_Stone_ADDER_32)                 0.00       0.25 r
+  KG_COMP/P1/B (Prob_31)                                  0.00       0.25 r
+  KG_COMP/P1/U1/Y (CLKXOR2X2M)                            0.12       0.37 r
+  KG_COMP/P1/P (Prob_31)                                  0.00       0.37 r
+  KG_COMP/U62/Y (XNOR2X2M)                                0.03       0.40 f
+  KG_COMP/S_reg[1] (Kogge_Stone_ADDER_32)                 0.00       0.40 f
+  RESULT_S_DFF/S_D[1] (dff_out)                           0.00       0.40 f
+  RESULT_S_DFF/S_Q_reg[1]/D (DFFRQX2M)                    0.00       0.40 f
+  data arrival time                                                  0.40
+
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  clock uncertainty                                       0.30       0.30
+  RESULT_S_DFF/S_Q_reg[1]/CK (DFFRQX2M)                   0.00       0.30 r
+  library hold time                                      -0.01       0.29
+  data required time                                                 0.29
+  --------------------------------------------------------------------------
+  data required time                                                 0.29
+  data arrival time                                                 -0.40
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.11
+
+
+1
