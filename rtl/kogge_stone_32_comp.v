@@ -463,7 +463,7 @@ always @(*) begin
     S_reg[29] = P[29] ^ C28;
 	S_reg[30] = P[30] ^ C29;
     S_reg[31] = P[31] ^ C30;
-	S_reg[32] = C30 ^ C31;
+	S_reg[32] = C31;
 end
 
 endmodule
